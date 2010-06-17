@@ -33,15 +33,4 @@ public class Util {
         return ((data[offset] & 0xFF) << 24) + ((data[offset+1] & 0xFF) << 16) +
                ((data[offset+2] & 0xFF) << 8) + (data[offset+3] & 0xFF);
     }
-
-    public static String join(String[] arr) {
-        if (arr.length == 0)
-            return "";
-
-        StringBuffer sb = new StringBuffer(arr[0]);
-        for (int i = 1; i < arr.length; i++)
-            sb.append(arr[i]).append(' ');
-
-        return sb.toString();
-    }
 }
