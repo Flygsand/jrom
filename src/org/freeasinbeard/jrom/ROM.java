@@ -1,17 +1,17 @@
 package org.freeasinbeard.jrom;
 
 public class ROM {
-	private String name;
-	private String console;
-	private String hash;
-	private Integer romSize;
-	private Integer ramSize;
-	private String country;
-	private String region;
-	private String version;
-	
-	public ROM(String name, String console) {
-		this.name = name;
+    private String name;
+    private String console;
+    private String hash;
+    private Integer romSize;
+    private Integer ramSize;
+    private String country;
+    private String region;
+    private String version;
+
+    public ROM(String name, String console) {
+        this.name = name;
         this.console = console;
         this.hash = null;
         this.romSize = null;
@@ -19,61 +19,61 @@ public class ROM {
         this.country = null;
         this.region = null;
         this.version = null;
-	}
-	
-	public String getName() {
-		return name;
-	}
+    }
 
-	public String getConsole() {
-		return console;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getHash() {
-		return hash;
-	}
+    public String getConsole() {
+        return console;
+    }
 
-	public void setHash(String hash) {
-		this.hash = hash;
-	}
+    public String getHash() {
+        return hash;
+    }
 
-	public Integer getROMSize() {
-		return romSize;
-	}
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 
-	public void setROMSize(Integer romSize) {
-		this.romSize = romSize;
-	}
+    public Integer getROMSize() {
+        return romSize;
+    }
 
-	public Integer getRAMSize() {
-		return ramSize;
-	}
+    public void setROMSize(Integer romSize) {
+        this.romSize = romSize;
+    }
 
-	public void setRAMSize(Integer ramSize) {
-		this.ramSize = ramSize;
-	}
+    public Integer getRAMSize() {
+        return ramSize;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setRAMSize(Integer ramSize) {
+        this.ramSize = ramSize;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public String getRegion() {
-		return region;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	public void setRegion(String region) {
-		this.region = region;
-	}
+    public String getRegion() {
+        return region;
+    }
 
-	public String getVersion() {
-		return version;
-	}
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
-	public void setVersion(String version) {
-		this.version = version;
-	}
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

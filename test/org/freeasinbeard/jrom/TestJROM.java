@@ -9,10 +9,10 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Test;
 
 public class TestJROM {
-	
-	@Test
-	public void testInvalidROM() 
-	throws FileNotFoundException, IOException, NoSuchAlgorithmException {
-		assertNull(JROM.read("data/random_crap"));
-	}
+
+    @Test
+    public void testInvalidROM()
+    throws FileNotFoundException, IOException, NoSuchAlgorithmException {
+        assertNull(JROM.read("data/random_crap"));
+    }
 }
