@@ -1,5 +1,6 @@
-package org.freeasinbeard.jrom;
+package org.freeasinbeard.jrom.test;
 
+import static org.freeasinbeard.jrom.test.asserts.Assert.assertAllParsersCalled;
 import static org.junit.Assert.assertNull;
 
 import java.io.FileNotFoundException;
@@ -8,11 +9,12 @@ import java.security.NoSuchAlgorithmException;
 
 import org.junit.Test;
 
-public class TestJROM {
+public class TestROMReader {
 
     @Test
     public void testInvalidROM()
     throws FileNotFoundException, IOException, NoSuchAlgorithmException {
-        assertNull(JROM.read("data/random_crap"));
+        assertNull(ROMReaderWrapper.getInstance().read("data/random_crap"));
+        assertAllParsersCalled();
     }
 }

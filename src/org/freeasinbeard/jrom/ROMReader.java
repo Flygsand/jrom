@@ -17,24 +17,33 @@ import org.freeasinbeard.jrom.parsers.NESParser;
 import org.freeasinbeard.jrom.parsers.Parser;
 import org.freeasinbeard.jrom.parsers.SNESParser;
 
-public class JROM {
+public final class ROMReader {
+
+    private static ROMReader theInstance = null;
 
     private static final Pattern EXT_RE = Pattern.compile(".+\\.(.+)$");
-    private static Map<String, Parser> parsers;
+    private Map<String, Parser> parsers;
 
-    static {
-        parsers = new HashMap<String, Parser>();
-        addParser(new GenesisParser(), "bin", "smd", "md");
-        addParser(new SNESParser(), "smc");
-        addParser(new NESParser(), "nes");
+    public static ROMReader getInstance() {
+        if (theInstance == null)
+            return (theInstance = new ROMReader());
+        else
+            return theInstance;
     }
 
-    public static ROM read(String path)
+    private ROMReader() {
+        parsers = new HashMap<String, Parser>();
+        setParser(new GenesisParser(), "bin", "smd", "md");
+        setParser(new SNESParser(), "smc");
+        setParser(new NESParser(), "nes");
+    }
+
+    public ROM read(String path)
         throws FileNotFoundException, IOException, NoSuchAlgorithmException {
         return read(new File(path));
     }
 
-    public static ROM read(File f)
+    public ROM read(File f)
         throws FileNotFoundException, IOException, NoSuchAlgorithmException {
         if (f.length() > Integer.MAX_VALUE)
             throw new IOException("File too large.");
@@ -73,17 +82,25 @@ public class JROM {
         return null;
     }
 
-    private static Parser parserForFile(File f) {
-        Matcher m = EXT_RE.matcher(f.getName());
-        if (m.matches())
-            return parsers.get(m.group(1));
-        else
-            return null;
-    }
-
-    private static void addParser(Parser p, String...extensions) {
+    public void setParser(Parser p, String...extensions) {
         for (String e : extensions) {
             parsers.put(e, p);
         }
+    }
+
+    public void clearParsers() {
+        parsers.clear();
+    }
+
+    public Collection<Parser> getParsers() {
+        return new HashSet<Parser>(parsers.values());
+    }
+
+    private Parser parserForFile(File f) {
+        Matcher m = EXT_RE.matcher(f.getName());
+        if (m.matches())
+            return parsers.get(m.group(1).toLowerCase());
+        else
+            return null;
     }
 }
